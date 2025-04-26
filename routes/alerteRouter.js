@@ -8,6 +8,7 @@ const {authorizeRole} = require('../midlewares/authorizeRole');
 
 router.post('/alerte', alerteController.addAlerte);
 router.get('/alertes/:departement', alerteController.getAlerteByDep);
+router.get('/alertes', alerteController.getAllAlertes);
 
 
 router.get('/getAllAlertes',requireAuthUser, authorizeRole("admin"), alerteController.getAllAlertes);

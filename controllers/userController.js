@@ -270,12 +270,13 @@ module.exports.SignIn = async (req, res) => {
 
         // Send the response with the token and other user details
         res.status(200).json({
-            userId: user._id,
+            id: user.id,
             username: user.username,
+            email: user.email,
             role: user.role,
-            status: true,
-            token,
-
+            age: user.age,
+            department: user.department,
+            token // The generated JWT token
 
 
         });
@@ -308,13 +309,12 @@ module.exports.SignUp = async (req, res) => {
 
         // Send the user and token in the response
         res.status(200).json({
-            user: {
-                username: user.username,
-                email: user.email,
-                role: user.role,
-                age: user.age,
-                department: user.department
-            },
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            role: user.role,
+            age: user.age,
+            department: user.department,
             token // The generated JWT token
         });
     } catch (error) {

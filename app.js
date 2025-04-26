@@ -58,7 +58,7 @@ app.use(logMiddleware); //log
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || origin.startsWith("http://localhost") || origin.startsWith("http://127.0.0.1")) {
+    if (!origin || origin.startsWith("http://192.168.243.181") || origin.startsWith("http://192.168.1.12")) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -81,7 +81,7 @@ app.use(session({   //cobfig session
 }))
 
 const apiVersion = '/api/v1';
-app.use('/uploads/', express.static(path.join(__dirname, 'uploads/')));
+app.use('/api/v1/uploads/', express.static(path.join(__dirname, 'uploads/')));
 
 app.use(apiVersion, usersRouter);
 app.use(apiVersion, articleRouter);
@@ -127,7 +127,7 @@ app.use(function (err, req, res, next) {
 
 
 const server = http.createServer(app); //2
-server.listen(process.env.port, () => {
+server.listen(process.env.port,() => {
   connectToMongoDb()
   console.log("app is running on port 5000");
 });

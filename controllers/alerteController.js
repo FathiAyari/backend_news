@@ -23,14 +23,10 @@ const formationModel = require("../models/formationSchema");
          const departement = req.params.departement;
          const alerte = await alerteModel.find({ departement: departement});
 
-  
-       if (!alerte || alerte.length === 0) {
-         throw new Error(" alerte introuvable");
-       }
-       res.status(200).json(alerte);
+
+         res.status(200).json(alerte);
      } catch (error) {
-       res.status(201).json({ message: error.message });
-     }
+         res.status(200).json([]);     }
   };
 
 
